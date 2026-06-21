@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 10px;
+            padding: 10px;
+        }
+        #container, #t1 {
+            text-align: center;
+        }
+        #t1 {
+            width: 220px;
+            height: 48px;
+            font-size: 1.5em;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            border: 1.5px solid #bbb;
+            padding: 0 12px;
+            background: #f5f5f5;
+            box-sizing: border-box;
+            text-align: right;
+        }
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4, 50px);
+            grid-gap: 10px;
+            justify-content: center;
+        }
+        .btn {
+            width: 48px;
+            height: 48px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            border: 1px solid #bbb;
+            background: #fff;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            background: #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+        #calc-box {
+            border: 2px solid #888;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            padding: 32px 28px 24px 28px;
+            background: #c2bebe;
+            display: inline-block;
+        }
+        #calc-box:hover {
+            box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+            
+        }
+        .wide-btn {
+            grid-column: span 2;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="calc-box">
+        <input id="t1" type="text">
+        <div id="container">
+            <button class="btn" value="1" onclick="appendValue('1')">1</button>
+            <button class="btn" value="2" onclick="appendValue('2')">2</button>
+            <button class="btn" value="3" onclick="appendValue('3')">3</button>
+            <button class="btn" value="+" onclick="appendValue('+')">+</button>
+            <button class="btn" value="4" onclick="appendValue('4')">4</button>
+            <button class="btn" value="5" onclick="appendValue('5')">5</button>
+            <button class="btn" value="6" onclick="appendValue('6')">6</button>
+            <button class="btn" value="-" onclick="appendValue('-')">-</button>
+            <button class="btn" value="7" onclick="appendValue('7')">7</button>
+            <button class="btn" value="8" onclick="appendValue('8')">8</button>
+            <button class="btn" value="9" onclick="appendValue('9')">9</button>
+            <button class="btn" value="*" onclick="appendValue('*')">*</button>
+            <button class="btn" value="00" onclick="appendValue('00')">00</button>
+            <button class="btn" value="0" onclick="appendValue('0')">0</button>
+            <button class="btn" value="." onclick="appendValue('.')">.</button>
+            <button class="btn" value="/" onclick="appendValue('/')">/</button>
+            <button id="clear" class="btn wide-btn" value="C" onclick="clearInput()">C</button>
+            <button id="equal" class="btn wide-btn" value="=" onclick="calculate()">=</button>
+        </div>
+    </div>
+</body>
+
+<script>
+function appendValue(val) {
+    document.getElementById('t1').value += val;
+}
+function clearInput() {
+    document.getElementById('t1').value = '';
+}
+function calculate() {
+    try {
+        document.getElementById('t1').value = eval(document.getElementById('t1').value);
+    } catch (e) {
+        document.getElementById('t1').value = 'Error';
+    }
+}
+</script>
+</html>
