@@ -1,0 +1,17 @@
+body {
+      margin: 0;
+      height: 100vh; /* full viewport height */
+      display: flex;
+      justify-content: center; /* horizontal center */
+      align-items: center;     /* vertical center */
+      text-align: center;      /* center text inside */
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 1000px;
+    }
+    img {
+      width: 300px;
+      height: auto;
+      border-radius: 50%;
+    }
